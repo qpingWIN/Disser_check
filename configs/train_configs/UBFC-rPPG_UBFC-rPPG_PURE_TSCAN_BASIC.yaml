@@ -62,7 +62,7 @@ VALID:
         W: 72
 TEST:
   METRICS: ['MAE','RMSE','MAPE','Pearson', 'SNR']
-  USE_LAST_EPOCH: True                     # to use provided validation dataset to find the best epoch, should be false
+  USE_LAST_EPOCH: False                     # to use provided validation dataset to find the best epoch, should be false
   DATA:
     FS: 30
     DATASET: PURE
@@ -81,7 +81,7 @@ TEST:
       CROP_FACE:
         DO_CROP_FACE: True
         USE_LARGE_FACE_BOX: True
-        LARGE_BOX_COEF: 1.5
+        LARGE_BOX_COEF: 2.0
         DETECTION:
           DO_DYNAMIC_DETECTION: False
           DYNAMIC_DETECTION_FREQUENCY : 30

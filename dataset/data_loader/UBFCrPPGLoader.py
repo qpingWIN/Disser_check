@@ -72,8 +72,8 @@ class UBFCrPPGLoader(BaseLoader):
 
 
     def generate_constant_transform(self):
-        pure_brightness_min, pure_brightness_max = 25, 100
-        smartphone_brightness_min, smartphone_brightness_max = 90, 180
+        pure_brightness_min, pure_brightness_max = 115, 140
+        smartphone_brightness_min, smartphone_brightness_max = 95, 182
         brightness_lower_factor = smartphone_brightness_min / pure_brightness_max
         brightness_upper_factor = smartphone_brightness_max / pure_brightness_min
         brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)
@@ -88,8 +88,7 @@ class UBFCrPPGLoader(BaseLoader):
             transforms.ToPILImage(),
             transforms.ColorJitter(
                 brightness=brightness_const,
-                saturation=saturation_const,
-                hue=(-0.1,0.1)
+                
             ),
             transforms.ToTensor()
           ])
@@ -100,18 +99,18 @@ class UBFCrPPGLoader(BaseLoader):
         filename = os.path.split(data_dirs[i]['path'])[-1]
         saved_filename = data_dirs[i]['index']
 
-        ubfc_brightness_min, ubfc_brightness_max = 115, 145
+        '''ubfc_brightness_min, ubfc_brightness_max = 115, 145
         smartphone_brightness_min, smartphone_brightness_max = 90, 180
         brightness_lower_factor = smartphone_brightness_min / ubfc_brightness_max
         brightness_upper_factor = smartphone_brightness_max / ubfc_brightness_min
-        brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)
+        brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)'''
 
 
-        ubfc_saturation_min, ubfc_saturation_max = 95, 185
+        '''ubfc_saturation_min, ubfc_saturation_max = 95, 185
         smartphone_saturation_min, smartphone_saturation_max = 82, 135
         saturation_lower_factor = smartphone_saturation_min / ubfc_saturation_max
         saturation_upper_factor = smartphone_saturation_max / ubfc_saturation_min
-        saturation_const = random.uniform(saturation_lower_factor, saturation_upper_factor)
+        saturation_const = random.uniform(saturation_lower_factor, saturation_upper_factor)'''
 
         constant_transform = self.generate_constant_transform()
 
@@ -138,17 +137,13 @@ class UBFCrPPGLoader(BaseLoader):
                 os.path.join(data_dirs[i]['path'],"vid.avi"), transform=constant_transform)
         
 
-        print("Original shape:", frames.shape)
-        print("Transformed shape:", augmented_frames.shape)
+        
+        #print("Transformed shape:", augmented_frames.shape)
         
 
         augmented_frames = augmented_frames.astype('uint8')
 
         # Check if dimensions match before concatenation
-        if frames.shape[1:] != augmented_frames.shape[1:]:
-            raise ValueError("Dimensions of original and augmented frames must match.")
-        if frames.dtype != augmented_frames.dtype:
-            raise ValueError("Data types of original and augmented frames must match.", frames.dtype)
         
         
 

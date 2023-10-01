@@ -100,8 +100,8 @@ class PURELoader(BaseLoader):
         return data_dirs_new
 
     def generate_constant_transform(self):
-        pure_brightness_min, pure_brightness_max = 25, 100
-        smartphone_brightness_min, smartphone_brightness_max = 90, 180
+        pure_brightness_min, pure_brightness_max = 28, 108
+        smartphone_brightness_min, smartphone_brightness_max = 95, 181
         brightness_lower_factor = smartphone_brightness_min / pure_brightness_max
         brightness_upper_factor = smartphone_brightness_max / pure_brightness_min
         brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)
@@ -116,8 +116,7 @@ class PURELoader(BaseLoader):
             transforms.ToPILImage(),
             transforms.ColorJitter(
                 brightness=brightness_const,
-                saturation=saturation_const,
-                hue=(-0.1,0.1)
+                
             ),
             transforms.ToTensor()
           ])
@@ -184,16 +183,16 @@ class PURELoader(BaseLoader):
         
 
         print("Original shape:", frames.shape)
-        print("Transformed shape:", augmented_frames.shape)
+        #print("Transformed shape:", augmented_frames.shape)
         
 
         augmented_frames = augmented_frames.astype('uint8')
 
         # Check if dimensions match before concatenation
-        if frames.shape[1:] != augmented_frames.shape[1:]:
-            raise ValueError("Dimensions of original and augmented frames must match.")
-        if frames.dtype != augmented_frames.dtype:
-            raise ValueError("Data types of original and augmented frames must match.", frames.dtype)
+        #if frames.shape[1:] != augmented_frames.shape[1:]:
+            #raise ValueError("Dimensions of original and augmented frames must match.")
+        #if frames.dtype != augmented_frames.dtype:
+            #raise ValueError("Data types of original and augmented frames must match.", frames.dtype)
         
         
 
