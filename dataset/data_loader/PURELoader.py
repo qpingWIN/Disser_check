@@ -130,34 +130,6 @@ class PURELoader(BaseLoader):
 
         constant_transform = self.generate_constant_transform()
 
-
-        '''        pure_brightness_min, pure_brightness_max = 25, 100
-                smartphone_brightness_min, smartphone_brightness_max = 90, 180
-                brightness_lower_factor = smartphone_brightness_min / pure_brightness_max
-                brightness_upper_factor = smartphone_brightness_max / pure_brightness_min
-                brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)
-
-
-                pure_saturation_min, pure_saturation_max = 20, 145
-                smartphone_saturation_min, smartphone_saturation_max = 82, 135
-                saturation_lower_factor = smartphone_saturation_min / pure_saturation_max
-                saturation_upper_factor = smartphone_saturation_max / pure_saturation_min
-                saturation_const = random.uniform(saturation_lower_factor, saturation_upper_factor)
-
-
-                
-
-                
-                constant_transform = transforms.Compose([
-                    transforms.ToPILImage(),
-                    transforms.ColorJitter(
-                        brightness=brightness_const,
-                        saturation=saturation_const,
-                        hue=(-0.1,0.1)
-                    ),
-                    transforms.ToTensor()
-                ])
-        '''
         # Read Frames
         if 'None' in config_preprocess.DATA_AUG:
             # Utilize dataset-specific function to read video
@@ -241,5 +213,5 @@ class PURELoader(BaseLoader):
                      for label in labels["/FullPackage"]]
         return np.asarray(waves)
 
-    
+    'HUY'
 
