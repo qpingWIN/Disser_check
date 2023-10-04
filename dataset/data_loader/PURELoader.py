@@ -115,7 +115,7 @@ class PURELoader(BaseLoader):
         constant_transform = transforms.Compose([
             transforms.ToPILImage(),
             transforms.ColorJitter(
-                brightness=brightness_const,
+                saturation=saturation_const
                 
             ),
             transforms.ToTensor()
