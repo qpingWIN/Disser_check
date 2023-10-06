@@ -72,16 +72,16 @@ class UBFCrPPGLoader(BaseLoader):
 
 
     def generate_constant_transform(self):
-        pure_brightness_min, pure_brightness_max = 115, 140
+        ubfc_brightness_min, ubfc_brightness_max = 115, 140
         smartphone_brightness_min, smartphone_brightness_max = 95, 182
-        brightness_lower_factor = smartphone_brightness_min / pure_brightness_max
-        brightness_upper_factor = smartphone_brightness_max / pure_brightness_min
+        brightness_lower_factor = smartphone_brightness_min / ubfc_brightness_max
+        brightness_upper_factor = smartphone_brightness_max / ubfc_brightness_min
         brightness_const = random.uniform(brightness_lower_factor, brightness_upper_factor)
 
-        pure_saturation_min, pure_saturation_max = 20, 145
+        ubfc_saturation_min, ubfc_saturation_max = 20, 145
         smartphone_saturation_min, smartphone_saturation_max = 82, 135
-        saturation_lower_factor = smartphone_saturation_min / pure_saturation_max
-        saturation_upper_factor = smartphone_saturation_max / pure_saturation_min
+        saturation_lower_factor = smartphone_saturation_min / ubfc_saturation_max
+        saturation_upper_factor = smartphone_saturation_max / ubfc_saturation_min
         saturation_const = random.uniform(saturation_lower_factor, saturation_upper_factor)
 
         constant_transform = transforms.Compose([

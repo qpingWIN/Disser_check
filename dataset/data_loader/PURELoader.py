@@ -154,7 +154,7 @@ class PURELoader(BaseLoader):
             os.path.join(data_dirs[i]['path'], filename, ""), transform=constant_transform)
         
 
-        print("Original shape:", frames.shape)
+        #print("Original shape:", frames.shape)
         #print("Transformed shape:", augmented_frames.shape)
         
 
